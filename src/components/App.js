@@ -173,6 +173,9 @@ class App extends Component {
     if (value == ''){
       newState[itemIndex].coords[type] = 0;
     }
+    else if (value == '0.'){
+      newState[itemIndex].coords[type] = value
+    }
     else if (newState[itemIndex].coords[type] == '0'){
       splicedValue = splicedValue[1];
       combinedNumber = splicedValue.toString();
