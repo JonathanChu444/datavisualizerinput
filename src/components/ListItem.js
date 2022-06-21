@@ -26,8 +26,14 @@ const ListItem = props => {
 
         <table className="tableinputlist" border="7" cellspacing="7">
           <tr>
+
+              <td className="tdcheck">
+                  <input className="checkboxinputlarger" type="checkbox" checked={props.item.check} className="checkboxinputlarger" value={props.itemIndex} onChange={() => {props.handleCheck(props.itemIndex)}}/>
+              </td>
+
           <td className="tdinputlist">
-          
+
+
             <input
                 className = "inputList"
                 type = "text"
@@ -71,7 +77,6 @@ const ListItem = props => {
               }>
                 ❌
             </button>
-            <input className="checkboxinputlarger" type="checkbox" checked={props.item.check} className="checkboxinputlarger" value={props.itemIndex} onChange={() => {props.handleCheck(props.itemIndex)}}/>
           </td>
 
           </tr>
