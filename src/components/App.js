@@ -139,7 +139,10 @@ class App extends Component {
   }
 
   checkValue = val =>{
-    if (isNaN(val)){
+    if(val === '.'){
+      return true;
+    }
+    else if (isNaN(val)){
       return false;
     }
     else{
@@ -162,7 +165,8 @@ class App extends Component {
 
 
     const newState = this.state.list;
-
+    var splicedValue = value.split('');
+    var combinedNumber = 0;
     /*console.log(itemIndex);
     console.log(e.target);
     console.log(type);*/
@@ -170,7 +174,9 @@ class App extends Component {
       newState[itemIndex].coords[type] = 0;
     }
     else if (newState[itemIndex].coords[type] == '0'){
-      newState[itemIndex].coords[type] = value;
+      splicedValue = splicedValue[1];
+      combinedNumber = splicedValue.toString();
+      newState[itemIndex].coords[type] = combinedNumber;
     }
     else{
       newState[itemIndex].coords[type] = value;
