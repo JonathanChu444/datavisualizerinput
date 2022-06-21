@@ -6,7 +6,7 @@ const InputForm = props => {
             
             <input
             className = "inputList"
-            type = "number"
+            type = "text"
             onChange = {props.handleItemInput}
             value = {props.pendingItemc.x}
             placeholder = "x"
@@ -14,7 +14,7 @@ const InputForm = props => {
 
             <input
                 className = "inputList"
-                type = "number"
+                type = "text"
                 onChange = {props.handleItemInput}
                 value = {props.pendingItemc.y}
                 placeholder = "y"
@@ -22,7 +22,7 @@ const InputForm = props => {
 
             <input
                 className = "inputList"
-                type = "number"
+                type = "text"
                 onChange = {props.handleItemInput}
                 value = {props.pendingItemc.z}
                 placeholder = "z"

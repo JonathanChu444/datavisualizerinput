@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   checkvalues = (X,Y,Z) => {
-    if (X != "" && Y != "" && Z != ""){
+    if (X != "" && Y != "" && Z != "" && !isNaN(X) && !isNaN(Y) && !isNaN(Z)){
       return true;
     }
     else{
