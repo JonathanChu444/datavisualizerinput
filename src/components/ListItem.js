@@ -1,3 +1,4 @@
+//this is the individual item in the List.js. There are input form text boxes that edit the coordinate directly 
 import React from "react";
 
 const ListItem = props => {
@@ -20,67 +21,68 @@ const ListItem = props => {
     }*/
 
     return (
-      <li class = "liList" style={{backgroundColor: ( props.item.highlight ) ? "yellow":"white"}}>
+      <li className = "liList" style={{backgroundColor: ( props.item.highlight ) ? "yellow":"white"}}>
         <style>
         </style>
 
-        <table className="tableinputlist" border="7" cellspacing="7">
+        <table className="tableinputlist" border="7" cellSpacing="7">
+          <tbody>
           <tr>
 
-              <td className="tdcheck">
-                  <input className="checkboxinputlarger" type="checkbox" checked={props.item.check} className="checkboxinputlarger" value={props.itemIndex} onChange={() => {props.handleCheck(props.itemIndex)}}/>
-              </td>
+            <td className="tdcheck">
+                <input className="checkboxinputlarger" type="checkbox" checked={props.item.check} value={props.itemIndex} onChange={() => {props.handleCheck(props.itemIndex)}}/>
+            </td>
 
-          <td className="tdinputlist">
+            <td className="tdinputlist">
 
 
-            <input
-                className = "inputList"
-                type = "text"
-                iindex = {props.itemIndex}
-                onChange = {props.handleItemEdit}
-                value = {X}
-                placeholder = "x"
-            />
+              <input
+                  className = "inputList"
+                  type = "text"
+                  iindex = {props.itemIndex}
+                  onChange = {props.handleItemEdit}
+                  value = {X}
+                  placeholder = "x"
+              />
 
-            <input
-                className = "inputList"
-                type = "text"
-                iindex = {props.itemIndex}
-                onChange = {props.handleItemEdit}
-                value = {Y}
-                placeholder = "y"
-            />
+              <input
+                  className = "inputList"
+                  type = "text"
+                  iindex = {props.itemIndex}
+                  onChange = {props.handleItemEdit}
+                  value = {Y}
+                  placeholder = "y"
+              />
 
-            <input
-                className = "inputList"
-                type = "text"
-                iindex = {props.itemIndex}
-                onChange = {props.handleItemEdit}
-                value = {Z}
-                placeholder = "z"
-            />
-            
-        
-            {/*
-            <button className="buttonlistitem" onClick={() => {props.handleEditClick(props.itemIndex)}}>
-              {X}, 
-              <br/>{Y},
-              <br/>{Z}
-            </button>*/
-            }
-          </td>
+              <input
+                  className = "inputList"
+                  type = "text"
+                  iindex = {props.itemIndex}
+                  onChange = {props.handleItemEdit}
+                  value = {Z}
+                  placeholder = "z"
+              />
+              
           
-          <td className="tdinputlist">
-            <button className="buttonlistitem" onClick={
-              () => {props.handleRemove(props.itemIndex)}
-              }>
-                ❌
-            </button>
-          </td>
+              {/*
+              <button className="buttonlistitem" onClick={() => {props.handleEditClick(props.itemIndex)}}>
+                {X}, 
+                <br/>{Y},
+                <br/>{Z}
+              </button>*/
+              }
+            </td>
+            
+            <td className="tdinputlist">
+              <button className="buttonlistitem" onClick={
+                () => {props.handleRemove(props.itemIndex)}
+                }>
+                  ❌
+              </button>
+            </td>
 
           </tr>
-
+          </tbody>
         </table>
       </li>
     );

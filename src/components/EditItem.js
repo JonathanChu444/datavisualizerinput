@@ -1,3 +1,5 @@
+//This file is unused
+
 import React from "react";
 
 const EditItem = props => {
@@ -27,7 +29,7 @@ const EditItem = props => {
                 value = {props.pendingEdit.z}
                 placeholder = "z"
             />
-            <button class = "buttonList" type = "submit" name = "submit" value = "submit">
+            <button className = "buttonList" type = "submit" name = "submit" value = "submit">
                 Edit
             </button>
         </form>

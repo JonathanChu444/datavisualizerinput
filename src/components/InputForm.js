@@ -1,3 +1,4 @@
+//These are the input forms at the top of the page
 import React from "react";
 
 const InputForm = props => {

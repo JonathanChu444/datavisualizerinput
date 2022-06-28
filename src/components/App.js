@@ -1,4 +1,3 @@
-// bobux
 import React, { Component } from "react";
 import "../styles/reset.css";
 import "../styles/App.css";
@@ -10,6 +9,7 @@ import List from './List';
 import EditItem from "./EditItem";
 
 class App extends Component {
+  //There are two objects, pendingEdit and pendingItemc, one for editing and one for submitting. They hold temporary coords that are later put into the official list via the newItemSubmitHandler and editHandler respectively.
   constructor(props) {
     super(props);
 
@@ -35,8 +35,9 @@ class App extends Component {
     };
   }
 
+  //checkvalues checks the values in the three input forms so that the newItemSubmitHandler doesn't submit any non-integers
   checkvalues = (X,Y,Z) => {
-    if (X != "" && Y != "" && Z != "" && !isNaN(X) && !isNaN(Y) && !isNaN(Z)){
+    if (X !== "" && Y !== "" && Z !== "" && this.checkValue(X) && this.checkValue(Y) && this.checkValue(Z)){
       return true;
     }
     else{
@@ -44,9 +45,10 @@ class App extends Component {
     }
   }
 
+  //newItemSubmitHandler takes in the inputted values from InputForm.js and adds a new item to the main list via setState
   newItemSubmitHandler = e => {
     e.preventDefault();
-    if (this.checkvalues(this.state.pendingItemc.x, this.state.pendingItemc.y, this.state.pendingItemc.z) == false) return;
+    if (this.checkvalues(this.state.pendingItemc.x, this.state.pendingItemc.y, this.state.pendingItemc.z) === false) return;
     this.setState({
       list: [
         {
@@ -72,9 +74,10 @@ class App extends Component {
     console.log(this.state.pendingItem);
   };
 
+  //editHandler takes in the inputted values from ListItem.js and edits the main list via setState at that specific index
   editHandler = e => {
     e.preventDefault();
-    if (this.checkvalues(this.state.pendingEdit.x, this.state.pendingEdit.y, this.state.pendingEdit.z) == false) return;
+    if (this.checkvalues(this.state.pendingEdit.x, this.state.pendingEdit.y, this.state.pendingEdit.z) === false) return;
     const newState = this.state.list;
 
     for(let i = 0; i < newState.length; i++) {
@@ -90,6 +93,7 @@ class App extends Component {
     });
   }
 
+  //when a text box is selected on the itemList, handleEditClick will copy the values from the selected item at that index and put it into the pendingEdit object to be editted.
   handleEditClick = index => {
     const newState = this.state.list;
 
@@ -98,7 +102,7 @@ class App extends Component {
       item.highlight = false;
     })
     */
-    let isHighlighted = false
+    /*let isHighlighted = false
     if(newState[index].highlight) {
       isHighlighted = true
     }
@@ -109,7 +113,7 @@ class App extends Component {
 
     newState[index].highlight = !isHighlighted;
 
-    this.state.showEdit = newState[index].highlight;
+    this.state.showEdit = newState[index].highlight;*/
 
     this.setState({
       list: newState,
@@ -121,6 +125,7 @@ class App extends Component {
     });
   }
 
+  //this sets the values in the input boxes
   handleItemInput = e => {
     let value = e.target.value
     let type = e.target.placeholder;
@@ -138,18 +143,17 @@ class App extends Component {
       }));
   }
 
+  //this checks a singular value for whether or not it is a real integer or not, doesn't accept any characters
   checkValue = val =>{
-    if(val === '.'){
+    if(val === '.' || val === '0-' || val === '-' || !isNaN(val)){
       return true;
-    }
-    else if (isNaN(val)){
-      return false;
     }
     else{
-      return true;
+      return false;
     }
   }
 
+  //this edits a value at the specific index and coord type (x,y, or z ) by getting the iindex attribute.
   handleItemEdit = e => {
     let value = e.target.value;
     let itemIndex = e.target.getAttribute("iindex");
@@ -161,22 +165,39 @@ class App extends Component {
         [type]: value
       }
     }));*/
-    if (this.checkValue(value) == false) return;
+    if (this.checkValue(value) === false) return;
 
 
     const newState = this.state.list;
+    //const tempNegState = this.state.pendingEdit;
     var splicedValue = value.split('');
     var combinedNumber = 0;
     /*console.log(itemIndex);
     console.log(e.target);
     console.log(type);*/
-    if (value == ''){
+    if(value === '0-'){
+      newState[itemIndex].coords[type] = '-0';
+      /*tempNegState[type] = '-';
+      console.log(tempNegState[type]);*/
+    }
+    /*else if(tempNegState[type] === '-'){
+      splicedValue = splicedValue[1];
+      combinedNumber = splicedValue.toString();
+      tempNegState[type] = '';
+      newState[itemIndex].coords[type] = '-' + combinedNumber;
+    }*/
+    else if (value === '' || value === '-'){
       newState[itemIndex].coords[type] = 0;
     }
-    else if (value == '0.'){
-      newState[itemIndex].coords[type] = value
+    else if (value === '0.'){
+      newState[itemIndex].coords[type] = value;
     }
-    else if (newState[itemIndex].coords[type] == '0'){
+    else if (value === '-01' || value === '-02' || value === '-03' || value === '-04' || value === '-05' || value === '-06' || value === '-07' || value === '-08' || value === '-09'){
+      splicedValue = splicedValue[2];
+      combinedNumber = splicedValue.toString();
+      newState[itemIndex].coords[type] = '-' + combinedNumber;
+    }
+    else if (newState[itemIndex].coords[type] === '0'){
       splicedValue = splicedValue[1];
       combinedNumber = splicedValue.toString();
       newState[itemIndex].coords[type] = combinedNumber;
@@ -189,6 +210,7 @@ class App extends Component {
     });
   }
 
+  //handles the removal of items that are checked
   handlecRemove = e => {
     const newState = this.state.list.filter(item => item.check !== true);
     this.setState({
@@ -196,6 +218,7 @@ class App extends Component {
     });
   }
 
+  //handles the removal of items that have been clicked on their delete button
   handleRemove = index => {
     const newState = this.state.list.filter(item => this.state.list.indexOf(item) !== index);
     this.setState({
@@ -210,6 +233,7 @@ class App extends Component {
     })
   });*/
 
+  //deletes every item in the list
   deleteall = e => {
     e.preventDefault();
     this.setState({
@@ -217,6 +241,7 @@ class App extends Component {
     });
   };
 
+  //changes the status of whether or not an item is checked
   handleCheck = index => {
     var newlist = this.state.list;
     newlist[index].check = !newlist[index].check;
@@ -248,13 +273,6 @@ class App extends Component {
         pendingItemc = {this.state.pendingItemc}
         />
 
-        <EditItem
-            showEdit = {this.state.showEdit}
-            editHandler = {this.editHandler}
-            handleItemEdit = {this.handleItemEdit}
-            pendingEdit = {this.state.pendingEdit}
-        />
-
         <List list = {this.state.list}
         handleRemove = {this.handleRemove}
         handleCheck = {this.handleCheck}
@@ -265,13 +283,13 @@ class App extends Component {
         pendingEdit = {this.state.pendingEdit}
         />
 
-        <button class = "buttonList" onClick={this.handlecRemove}>
+        <button className= "buttonList" onClick={this.handlecRemove}>
           Delete Checked
         </button>
 
         <br/>
 
-        <button class = "buttonList" type = "submit" onClick={this.deleteall}>
+        <button className = "buttonList" type = "submit" onClick={this.deleteall}>
           Delete All
         </button>
 

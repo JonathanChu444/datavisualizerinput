@@ -1,10 +1,11 @@
+//This is the list where all the ListItem.js items are stored
 import React from "react";
 import ListItem from "./ListItem";
 
 const List = props => {
     return (
         <div className = "mainlist">
-            <ul class = "ulList">
+            <ul className = "ulList">
                 {props.list.map((item, index) => (
                     <ListItem
                         handleCheck = {props.handleCheck}
