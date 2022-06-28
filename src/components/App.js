@@ -177,15 +177,7 @@ class App extends Component {
     console.log(type);*/
     if(value === '0-'){
       newState[itemIndex].coords[type] = '-0';
-      /*tempNegState[type] = '-';
-      console.log(tempNegState[type]);*/
     }
-    /*else if(tempNegState[type] === '-'){
-      splicedValue = splicedValue[1];
-      combinedNumber = splicedValue.toString();
-      tempNegState[type] = '';
-      newState[itemIndex].coords[type] = '-' + combinedNumber;
-    }*/
     else if (value === '' || value === '-'){
       newState[itemIndex].coords[type] = 0;
     }
@@ -197,7 +189,7 @@ class App extends Component {
       combinedNumber = splicedValue.toString();
       newState[itemIndex].coords[type] = '-' + combinedNumber;
     }
-    else if (newState[itemIndex].coords[type] === '0'){
+    else if (newState[itemIndex].coords[type] === 0){
       splicedValue = splicedValue[1];
       combinedNumber = splicedValue.toString();
       newState[itemIndex].coords[type] = combinedNumber;
