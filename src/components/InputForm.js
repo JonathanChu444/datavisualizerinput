@@ -4,30 +4,31 @@ import React from "react";
 const InputForm = props => {
     return (
         <form onSubmit={props.newItemSubmitHandler} className = "todoinputList">
-            
-            <input
-            className = "inputList"
-            type = "text"
-            onChange = {props.handleItemInput}
-            value = {props.pendingItemc.x}
-            placeholder = "x"
-            />
-
-            <input
-                className = "inputList"
-                type = "text"
-                onChange = {props.handleItemInput}
-                value = {props.pendingItemc.y}
-                placeholder = "y"
-            />
-
-            <input
-                className = "inputList"
-                type = "text"
-                onChange = {props.handleItemInput}
-                value = {props.pendingItemc.z}
-                placeholder = "z"
-            />
+            <center>
+                <input
+                    className = "inputList"
+                    type = "text"
+                    onChange = {props.handleItemInput}
+                    value = {props.pendingItemc.x}
+                    placeholder = "x"
+                />
+                
+                <input
+                    className = "inputList"
+                    type = "text"
+                    onChange = {props.handleItemInput}
+                    value = {props.pendingItemc.y}
+                    placeholder = "y"
+                />
+                
+                <input
+                    className = "inputList"
+                    type = "text"
+                    onChange = {props.handleItemInput}
+                    value = {props.pendingItemc.z}
+                    placeholder = "z"
+                />
+            </center>
             <button className = "buttonsubmitList" type = "submit" name = "submit" value = "submit" onSubmit={props.newItemSubmitHandler}>
                 Add
             </button>

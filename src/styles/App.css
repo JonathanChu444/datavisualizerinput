@@ -19,44 +19,33 @@ body {
   width: 100%;
 }
 
-.tdcheck{
-
-}
-  
-.tdinputlist{
-}
-
 .wrapperList {
-  max-width: 306px;
-  margin: auto;
+  width:fit-content;
   background: #fff;
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   /*padding: 50px;*/
 }
 
 .todoInputList {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 35px;
+  margin-top:;
 }
 
 .inputList {
-  width: 31%;
-  margin-right: 5px;
-  /* padding: 15px 0 15px 15px; */
+  width: 33%;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-top: 0px;
   border-radius: 4px;
-  border-left:1px solid rgb(0, 0, 0);
   border: 1px solid rgb(136,139,141);
 }
 
 .checkboxinputlarger{
   width: 15px;
   height: 15px;
+  margin-top:0px;
+  margin-bottom:0px;
   margin-right: 5px;
-  /* padding: 15px 0 15px 15px; */
   border-radius: 4px;
   border: 1px solid rgb(238, 238, 238);
 }

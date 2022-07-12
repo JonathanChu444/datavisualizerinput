@@ -28,52 +28,49 @@ const ListItem = props => {
         <table className="tableinputlist" border="7" cellSpacing="7">
           <tbody>
           <tr>
-
-            <td className="tdcheck">
+            <td>
                 <input className="checkboxinputlarger" type="checkbox" checked={props.item.check} value={props.itemIndex} onChange={() => {props.handleCheck(props.itemIndex)}}/>
             </td>
+            <td className="todoInputList">
+              <center>
+                <input
+                    className = "inputList"
+                    type = "text"
+                    iindex = {props.itemIndex}
+                    onChange = {props.handleItemEdit}
+                    value = {X}
+                    placeholder = "x"
+                />
 
-            <td className="tdinputlist">
+                <input
+                    className = "inputList"
+                    type = "text"
+                    iindex = {props.itemIndex}
+                    onChange = {props.handleItemEdit}
+                    value = {Y}
+                    placeholder = "y"
+                />
 
-
-              <input
-                  className = "inputList"
-                  type = "text"
-                  iindex = {props.itemIndex}
-                  onChange = {props.handleItemEdit}
-                  value = {X}
-                  placeholder = "x"
-              />
-
-              <input
-                  className = "inputList"
-                  type = "text"
-                  iindex = {props.itemIndex}
-                  onChange = {props.handleItemEdit}
-                  value = {Y}
-                  placeholder = "y"
-              />
-
-              <input
-                  className = "inputList"
-                  type = "text"
-                  iindex = {props.itemIndex}
-                  onChange = {props.handleItemEdit}
-                  value = {Z}
-                  placeholder = "z"
-              />
-              
-          
-              {/*
-              <button className="buttonlistitem" onClick={() => {props.handleEditClick(props.itemIndex)}}>
-                {X}, 
-                <br/>{Y},
-                <br/>{Z}
-              </button>*/
-              }
+                <input
+                    className = "inputList"
+                    type = "text"
+                    iindex = {props.itemIndex}
+                    onChange = {props.handleItemEdit}
+                    value = {Z}
+                    placeholder = "z"
+                />
+            
+                {/*
+                <button className="buttonlistitem" onClick={() => {props.handleEditClick(props.itemIndex)}}>
+                  {X}, 
+                  <br/>{Y},
+                  <br/>{Z}
+                </button>*/
+                }
+              </center>
             </td>
             
-            <td className="tdinputlist">
+            <td>
               <button className="buttonlistitem" onClick={
                 () => {props.handleRemove(props.itemIndex)}
                 }>
